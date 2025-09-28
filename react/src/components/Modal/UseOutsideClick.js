@@ -1,27 +1,29 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 function UseOutsideClick(ref, callback) {
   useEffect(() => {
     const handleOutsideClick = (e) => {
+      // if ref does not exist or the clicked element is inside ref, ignore
       if (!ref.current || ref.current.contains(e.target)) {
         return;
       }
 
-      e.stopPropagation();
-
-      const { pageX, pageY } = e;
-      const { top, bottom, left, right } = ref.current.getBoundingClientRect();
-
-      if (pageX < left || pageX > right || pageY < top || pageY > bottom) {
-        callback?.();
+      // if the hamburger button is clicked, it is not considered an external click
+      const hamburgerButton = document.querySelector(
+        '.headerBtnContainer button'
+      );
+      if (hamburgerButton && hamburgerButton.contains(e.target)) {
+        return;
       }
+
+      // 외부 클릭으로 판단되면 콜백 실행
+      callback?.();
     };
 
-    window.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener('mousedown', handleOutsideClick);
 
-    return () => 
-      window.removeEventListener("mousedown", handleOutsideClick);
-    }, [ref, callback]);
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [ref, callback]);
 }
 
 export default UseOutsideClick;
