@@ -14,14 +14,15 @@ from flask_app import *
 from logs import *
 from datetime import datetime, timedelta
 from dataclasses import fields
-from notification import make_link_notify_message, make_result_notify_message, send_solapi_message
+# from notification import make_link_notify_message, make_result_notify_message, send_solapi_message
 
 ### temporary server setup
 DB = DBModule()
 
 #Release: http://shift2me.com 
 #Debug: http://localhost:3000
-react_host = "http://shift2me.com"
+# react_host = "http://shift2me.com"
+react_host = "http://localhost:3000"
 
 @app.route("/kakao_login")
 def kakao_login():
@@ -233,11 +234,11 @@ def save_epa_test():
 
     user_prop = DB.get_user_property(session["login_type"], session["id"])
     #TODO : Is it okay without checking notification agreement?
-    if user_prop.get("phone_number") != 'unknown':
-        msg = make_link_notify_message(user_prop.get("phone_number"), user_prop.get("name"), "MZ 테스트", tid)
-        res = send_solapi_message(msg)
-        if res.get('failedMessageList') != None:
-            logger.error(f'failed to send solapi message: {res.get("failedMessageList")}')
+    # if user_prop.get("phone_number") != 'unknown':
+    #     msg = make_link_notify_message(user_prop.get("phone_number"), user_prop.get("name"), "MZ 테스트", tid)
+    #     res = send_solapi_message(msg)
+    #     if res.get('failedMessageList') != None:
+    #         logger.error(f'failed to send solapi message: {res.get("failedMessageList")}')
 
     result = {"tid": tid}
     return make_response(result, 201);
@@ -266,16 +267,17 @@ def save_epa_reply():
             return make_response({"description": "success_without_notification"}, 201)
 
         owner_prop = DB.get_user_property(test.get('owner_platform'), test.get('owner_id'))
-        if owner_prop.get("phone_number") != 'unknown':
-            msg = make_result_notify_message(owner_prop.get("phone_number"), owner_prop.get("name"), "MZ 테스트", len(test.get("replies")))
-            res = send_solapi_message(msg)
-            if res.get('failedMessageList') != None:
-                logger.error(f'failed to send solapi message: {res.get("failedMessageList")}')
-                description = "success_without_notification"
-            else:
-                test.update({"notified": int(n)+1})
-                DB.update_epa_test(tid, test)
-                description = "success_with_notification"
+        # if owner_prop.get("phone_number") != 'unknown':
+        #     msg = make_result_notify_message(owner_prop.get("phone_number"), owner_prop.get("name"), "MZ 테스트", len(test.get("replies")))
+        #     res = send_solapi_message(msg)
+        #     if res.get('failedMessageList') != None:
+        #         logger.error(f'failed to send solapi message: {res.get("failedMessageList")}')
+        #         description = "success_without_notification"
+        #     else:
+        #         test.update({"notified": int(n)+1})
+        #         DB.update_epa_test(tid, test)
+        #         description = "success_with_notification"
+        description = "success_without_notification"
         return make_response({"description": description}, 201)
     else:
         return make_response({"description": "failed"}, 400)

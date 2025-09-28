@@ -1,4 +1,4 @@
-import solapi
+# import solapi
 import config
 
 import json
@@ -11,14 +11,14 @@ import requests
 import platform
 
 # 아래 값은 필요시 수정
-protocol = 'https'
-domain = 'api.solapi.com'
-prefix = ''
+# protocol = 'https'
+# domain = 'api.solapi.com'
+# prefix = ''
 
-template_ids = {
-    'send_link': config.SOLAPI_TEMPLATE_LINK,
-    'send_result': config.SOLAPI_TEMPLATE_RESULT
-}
+# template_ids = {
+#     'send_link': config.SOLAPI_TEMPLATE_LINK,
+#     'send_result': config.SOLAPI_TEMPLATE_RESULT
+# }
 
 def __unique_id__():
     return str(uuid.uuid1().hex)
@@ -49,15 +49,15 @@ def __get_url__(path):
     url = url + path
     return url
 
-def __send_many__(parameter):
-    api_key = config.SOLAPI_API_KEY
-    api_secret = config.SOLAPI_API_SECRET
-    parameter['agent'] = {
-        'sdkVersion': 'python/4.2.0',
-        'osPlatform': platform.platform() + " | " + platform.python_version()
-    }
+# def __send_many__(parameter):
+#     api_key = config.SOLAPI_API_KEY
+#     api_secret = config.SOLAPI_API_SECRET
+#     parameter['agent'] = {
+#         'sdkVersion': 'python/4.2.0',
+#         'osPlatform': platform.platform() + " | " + platform.python_version()
+#     }
 
-    return requests.post(__get_url__('/messages/v4/send-many'), headers=__get_headers__(api_key, api_secret), json=parameter)
+#     return requests.post(__get_url__('/messages/v4/send-many'), headers=__get_headers__(api_key, api_secret), json=parameter)
 
 '''
 # example
@@ -83,41 +83,41 @@ data = {
 }
 '''
 
-def make_link_notify_message(phone_number, member_name, test_name, tid):
-    phone_number = phone_number.replace('-', '')
-    return {
-        'to': phone_number,
-        'from': config.SOLAPI_CALLER_NUMBER,
-        'kakaoOptions': {
-            'pfId': config.KAKAO_PFID,
-            'templateId': config.SOLAPI_TEMPLATE_LINK,
-            'variables': {
-                '#{회원명}': member_name,
-                '#{테스트명}': test_name,
-                '#{tid}': tid
-            }
-        }
-    }
+# def make_link_notify_message(phone_number, member_name, test_name, tid):
+#     phone_number = phone_number.replace('-', '')
+#     return {
+#         'to': phone_number,
+#         'from': config.SOLAPI_CALLER_NUMBER,
+#         'kakaoOptions': {
+#             'pfId': config.KAKAO_PFID,
+#             'templateId': config.SOLAPI_TEMPLATE_LINK,
+#             'variables': {
+#                 '#{회원명}': member_name,
+#                 '#{테스트명}': test_name,
+#                 '#{tid}': tid
+#             }
+#         }
+#     }
 
-def make_result_notify_message(phone_number, member_name, test_name, number_of_reply):
-    phone_number = phone_number.replace('-', '')
-    return {
-        'to': phone_number,
-        'from': config.SOLAPI_CALLER_NUMBER,
-        'kakaoOptions': {
-            'pfId': config.KAKAO_PFID,
-            'templateId': config.SOLAPI_TEMPLATE_RESULT,
-            'variables': {
-                '#{회원명}': member_name,
-                '#{테스트명}': test_name,
-                '#{응답 인원 수}': number_of_reply
-            }
-        }
-    }
+# def make_result_notify_message(phone_number, member_name, test_name, number_of_reply):
+#     phone_number = phone_number.replace('-', '')
+#     return {
+#         'to': phone_number,
+#         'from': config.SOLAPI_CALLER_NUMBER,
+#         'kakaoOptions': {
+#             'pfId': config.KAKAO_PFID,
+#             'templateId': config.SOLAPI_TEMPLATE_RESULT,
+#             'variables': {
+#                 '#{회원명}': member_name,
+#                 '#{테스트명}': test_name,
+#                 '#{응답 인원 수}': number_of_reply
+#             }
+#         }
+#     }
 
-def send_solapi_message(message):
-    data = {
-        'messages': [message]
-    }
-    res = __send_many__(data)
-    return res.json()
+# def send_solapi_message(message):
+#     data = {
+#         'messages': [message]
+#     }
+#     res = __send_many__(data)
+#     return res.json()
