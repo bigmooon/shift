@@ -1,39 +1,43 @@
 .landingContainer {
-  background-color: #FFF;
-  height: 100vh !important;
-  width: 100vw;
+  background-color: #fff;
+  width: 100%;
+  overflow: hidden;
 
   .landingWrapper {
-    margin-top: 6.44rem;
     display: flex;
     flex-direction: column;
+    gap: 3rem;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 
     .landingTitle {
       display: flex;
       justify-content: center;
+      flex-shrink: 0;
 
       span {
         text-align: center;
-        font-size: 2.25rem;
+        font-size: 6.5vw;
         font-weight: 700;
-        color: #1A191B;
+        color: #1a191b;
         line-height: 150%;
       }
 
       .purpleText {
-        color: #A778C2;
+        color: #a778c2;
       }
     }
 
     .imgBox {
-      margin-top: 4.31rem;
-      width: 50%;
-      height: 16.93rem;
+      width: 80%;
+      height: 50vh;
+      max-width: 70%;
+      max-height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-grow: 1;
 
       .mySwiper {
         display: flex;
@@ -47,7 +51,7 @@
           justify-content: center;
           align-items: center;
           border-radius: 0.9rem;
-          background-color: #FFF;
+          background-color: #fff;
           box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 
           img {
@@ -62,20 +66,67 @@
 }
 
 .startBtn {
-  margin-top: 3.93rem;
+  width: 85%;
+  height: 3.3rem;
   border-radius: 0.475rem;
+  flex-shrink: 0;
 
   span {
-    color: #FFF;
-    font-size: 1.375rem;
-    font-weight: 600;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
     letter-spacing: 0.125rem;
   }
 }
 
-@media screen and (min-width: 700px) {
-  .imgBox {
-    width: 14rem !important;
+@media screen and (min-width: 768px) {
+  .landingContainer {
+    .landingWrapper {
+      .landingTitle {
+        span {
+          font-size: 2.25rem;
+        }
+      }
+
+      .imgBox {
+        width: 300px;
+        height: 400px;
+      }
+    }
   }
 
+  .startBtn {
+    width: 350px;
+    height: 60px;
+
+    span {
+      font-size: 1.375rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .landingContainer {
+    .landingWrapper {
+      .landingTitle {
+        span {
+          font-size: 2.5rem;
+        }
+      }
+
+      .imgBox {
+        width: 300px;
+        height: 450px;
+      }
+    }
+  }
+
+  .startBtn {
+    width: 400px;
+    height: 65px;
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
 }
