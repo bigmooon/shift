@@ -7,6 +7,8 @@ logs/
 backups/
 flask_session/
 firebase-shift-sdk.json
+venv/
+shift_key.json
 
 # for react
 
