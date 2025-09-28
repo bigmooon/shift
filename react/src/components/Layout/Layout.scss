@@ -1,0 +1,87 @@
+/* 레이아웃 스타일 */
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.layout-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  /* 헤더 컨테이너 */
+  > * {
+    width: 100%;
+    max-width: 100%;
+    background: #9c76ac;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.layout-content {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* 헤더가 없을 때 상단 여백 추가 */
+.layout-container:not(:has(.layout-header)) .layout-content {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* CSS :has() 지원하지 않는 브라우저를 위한 fallback */
+.layout-no-header .layout-content {
+  padding-top: 2.5rem;
+}
+
+/* 반응형 디자인 */
+@media (min-width: 768px) {
+  .layout-header > * {
+    max-width: 768px;
+  }
+
+  .layout-content {
+    max-width: 768px;
+    padding: 0 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-header > * {
+    max-width: 480px;
+  }
+
+  .layout-content {
+    max-width: 480px;
+  }
+}
+
+/* 포커스 접근성 개선 */
+.layout-container *:focus-visible {
+  outline: 2px solid #9c76ac;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 터치 타겟 최소 크기 보장 */
+.layout-container button,
+.layout-container a,
+.layout-container [role='button'] {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
