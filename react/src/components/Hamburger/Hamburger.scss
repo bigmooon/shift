@@ -6,15 +6,32 @@
   top: 2.5rem;
   z-index: 1000;
   height: 100vh;
-  background: linear-gradient(180deg, #F5F5F5 46.48%, #FCFCFC 100%);;
+  background: linear-gradient(180deg, #f5f5f5 46.48%, #fcfcfc 100%);
+
+  // slide in/out animation
+  transform: translateX(0);
+  opacity: 1;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  &.slide-enter-active {
+    animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      forwards;
+  }
+
+  &.slide-exit-active {
+    animation: slideOutToRight 0.25s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+      forwards;
+  }
 
   .hamburgerUl {
     width: 100%;
     flex-direction: column;
     list-style: none;
-    
+
     .hamburgerLi {
-      background: linear-gradient(180deg, #F5F5F5 53.5%, #FCFCFC 100%);
+      background: linear-gradient(180deg, #f5f5f5 53.5%, #fcfcfc 100%);
       padding: 0.5rem 0;
       cursor: pointer;
 
@@ -24,7 +41,7 @@
         height: 100%;
       }
 
-      &:first-child{
+      &:first-child {
         span {
           padding-left: 2rem;
         }
@@ -32,13 +49,13 @@
 
       &:hover {
         .hamburgerLiSpan {
-          color: #9C76AC;
+          color: #9c76ac;
         }
       }
 
       &.active {
         .hamburgerLiSpan {
-          color: #9C76AC;
+          color: #9c76ac;
         }
 
         img {
@@ -59,14 +76,14 @@
         padding-left: 1rem;
         font-size: 0.9rem;
         font-weight: 700;
-        color: #9C76AC;
+        color: #9c76ac;
         line-height: 2.5rem;
         letter-spacing: 0.05rem;
       }
 
       .hamburgerSubUl {
         padding-bottom: 0.5rem;
-        background-color: #F5F5F5;
+        background-color: #f5f5f5;
         list-style: none;
 
         .hamburgerSubLi {
@@ -81,6 +98,44 @@
           }
         }
       }
-    }   
+    }
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+    filter: blur(1px);
+  }
+  20% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }

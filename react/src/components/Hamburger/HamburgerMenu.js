@@ -1,17 +1,23 @@
-import React, { useState } from "react";
-import Arrow from "../../assets/images/headerArrow.svg";
-import "./Hamburger.scss";
-import { Link, useNavigate } from "react-router-dom";
-import { loadUserData } from "../CookieUtils/SecureLocalStorageExtends";
-import HandleLogout from "../Login/HandleLogout";
+import React, { useState } from 'react';
+import Arrow from '../../assets/images/headerArrow.svg';
+import './Hamburger.scss';
+import { Link, useNavigate } from 'react-router-dom';
+import { loadUserData } from '../CookieUtils/SecureLocalStorageExtends';
+import HandleLogout from '../Login/HandleLogout';
 
-const HamburgerMenu = ({ toggleMenu }) => {
+const HamburgerMenu = ({ toggleMenu, isOpen, isAnimating, isClosing }) => {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-  const [isLogin, setIsLogin] = useState(loadUserData("isLogin"));
+  const [isLogin, setIsLogin] = useState(loadUserData('isLogin'));
   const navigate = useNavigate();
 
+  // determine the animation class
+  const getAnimationClass = () => {
+    if (!isAnimating) return '';
+    return isClosing ? 'slide-exit-active' : 'slide-enter-active';
+  };
+
   const showPreparationAlert = () => {
-    alert("준비중입니다!  다음 컨텐츠도 기대헤주세요 :)");
+    alert('준비중입니다!  다음 컨텐츠도 기대헤주세요 :)');
   };
 
   const handleLogoutSuccess = () => {
@@ -23,28 +29,30 @@ const HamburgerMenu = ({ toggleMenu }) => {
     HandleLogout({ navigate, onLogoutSuccess: handleLogoutSuccess });
   };
 
-
   return (
-    <div className="hamburgerContainer">
+    <div className={`hamburgerContainer ${getAnimationClass()}`}>
       <ul className="hamburgerUl">
-        <li onClick={() => setIsSubMenuOpen(!isSubMenuOpen)} className={`hamburgerLi ${isSubMenuOpen ? 'active' : ''}`}>
+        <li
+          onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
+          className={`hamburgerLi ${isSubMenuOpen ? 'active' : ''}`}
+        >
           <img src={Arrow} alt="arrow"></img>
           <span className="hamburgerLiSpan">자기이해 검사</span>
           {isSubMenuOpen && (
             <ul className="hamburgerSubUl">
-              <Link to={"/"} onClick={toggleMenu}>
+              <Link to={'/'} onClick={toggleMenu}>
                 <li className="hamburgerSubLi">
                   <span>남이 보는 나 ( MZ 버전 )</span>
                 </li>
               </Link>
               <li className="hamburgerSubLi" onClick={showPreparationAlert}>
                 <span>남이 보는 나 (대학생 버전)</span>
-              </li>              
+              </li>
             </ul>
           )}
         </li>
         <li className="hamburgerLi">
-          <Link to={"/result/dashboard"} onClick={toggleMenu}>
+          <Link to={'/result/dashboard'} onClick={toggleMenu}>
             <span className="hamburgerLiSpan">결과 확인</span>
           </Link>
         </li>
@@ -59,7 +67,7 @@ const HamburgerMenu = ({ toggleMenu }) => {
               로그아웃
             </span>
           ) : (
-            <Link to={"/login"} onClick={toggleMenu}>
+            <Link to={'/login'} onClick={toggleMenu}>
               <span className="hamburgerLiSpan">로그인</span>
             </Link>
           )}
@@ -67,6 +75,6 @@ const HamburgerMenu = ({ toggleMenu }) => {
       </ul>
     </div>
   );
-}
+};
 
 export default HamburgerMenu;
