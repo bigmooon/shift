@@ -19,8 +19,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "cross-env BUILD_PATH=./tmp_build react-scripts build && shx rm -rf build/* && shx mv tmp_build/* build/",
-    "build:demo": "cross-env REACT_APP_MODE=demo BUILD_PATH=./tmp_build react-scripts build && shx rm -rf build/* && shx mv tmp_build/* build/",
+    "build": "cross-env CI=false BUILD_PATH=./tmp_build react-scripts build && shx rm -rf build/* && shx mv tmp_build/* build/",
+    "build:demo": "cross-env CI=false REACT_APP_MODE=demo BUILD_PATH=./tmp_build react-scripts build && shx rm -rf build/* && shx mv tmp_build/* build/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
