@@ -1,4 +1,3 @@
-import React from "react";
 import { Step } from "./Step";
 import "./Footer.scss";
 

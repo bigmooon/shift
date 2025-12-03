@@ -5,7 +5,7 @@ import {
   useLocation,
   useNavigate,
 } from 'react-router-dom';
-import { React, useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.scss';
 import Layout from './components/Layout/Layout';
 import SocialLogin from './pages/SocialLogin';

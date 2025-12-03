@@ -1,4 +1,3 @@
-import React from "react";
 import { KeywordBtnBox } from "./KeywordBtnBox";
 import "../Button.scss";
 

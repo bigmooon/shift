@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import './Header.scss';
 import Logo from '../../assets/images/HeaderLogo.svg';
 import NavBtn from '../../assets/images/NavBtn.svg';

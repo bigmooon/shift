@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/LinkSender/CompleteHost.scss";
 import { Button } from "../../components/Button/Button";

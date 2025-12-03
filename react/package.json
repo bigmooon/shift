@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.0.24",
     "react": "^19.2.0",
@@ -19,7 +19,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "BUILD_PATH='./tmp_build' react-scripts build && rm -rf build/* && mv tmp_build/* build/",
+    "build": "cross-env BUILD_PATH=./tmp_build react-scripts build && shx rm -rf build/* && shx mv tmp_build/* build/",
+    "build:demo": "cross-env REACT_APP_MODE=demo BUILD_PATH=./tmp_build react-scripts build && shx rm -rf build/* && shx mv tmp_build/* build/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,7 +43,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.27.1",
-    "sass": "^1.70.0"
+    "cross-env": "^7.0.3",
+    "sass": "^1.70.0",
+    "shx": "^0.3.4"
   }
 }

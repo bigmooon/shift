@@ -1,4 +1,3 @@
-import React from "react";
 import ErrorImg from "../assets/images/Preparing.png";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button/Button";

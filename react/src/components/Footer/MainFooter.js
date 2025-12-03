@@ -1,4 +1,3 @@
-import React from "react";
 import SHIFT_LOGO from "../../assets/images/ShiftLogo_Purple.svg";
 import SHIFT_ICON from "../../assets/images/ShiftIcon_transparent.png";
 import META_SEQUOIA_ICON from "../../assets/images/MetaSequoia.png";

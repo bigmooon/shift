@@ -1,4 +1,3 @@
-import React from "react";
 import "../../../assets/styles/Result/Result.scss";
 import FEMALE_ICON from "../../../assets/images/statisticGenderFe.png";
 import MALE_ICON from "../../../assets/images/statisticGenderMale.png";

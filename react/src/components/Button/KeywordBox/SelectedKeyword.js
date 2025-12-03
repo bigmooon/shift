@@ -1,4 +1,3 @@
-import React from "react";
 import "../Button.scss";
 import DeleteBtn from "../../../assets/images/delBtn.svg";
 

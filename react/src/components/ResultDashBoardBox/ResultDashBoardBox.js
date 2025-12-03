@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../Button/Button";
 import MZImg from "../../assets/images/Result_MZ.png";

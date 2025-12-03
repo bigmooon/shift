@@ -1,4 +1,3 @@
-import React from "react";
 import "../../../assets/data/MZ/stateData";
 import stateData from "../../../assets/data/MZ/stateData"
 

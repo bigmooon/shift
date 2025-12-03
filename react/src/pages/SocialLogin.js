@@ -1,4 +1,3 @@
-import React from "react";
 import ShiftIcon from "../assets/images/ShiftIcon_transparent.png";
 import ShiftLogo from '../assets/images/ShiftLogo_Purple.svg';
 import Kakao from "../assets/images/kakao_login.png";

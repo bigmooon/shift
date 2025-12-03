@@ -1,4 +1,3 @@
-import React from "react";
 import "./ResultDashBoardBox.scss";
 import Preparing from "../../assets/images/Preparing.png";
 

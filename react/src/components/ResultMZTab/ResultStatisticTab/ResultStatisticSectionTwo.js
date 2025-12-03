@@ -1,4 +1,3 @@
-import React from "react";
 import "../../../assets/styles/Result/Result.scss";
 import FAMILY_ICON from "../../../assets/images/statisticFamily.png";
 import FRIEND_ICON from "../../../assets/images/statisticFriend.png";
